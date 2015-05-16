@@ -1138,9 +1138,11 @@ class SAU_Campus_Directory {
 		
 		$d = get_the_terms( get_the_ID(), 'department' );
 		$depts = array();
-		foreach ( $d as $t ) {
-			$depts[] = $t->name;
-		}
+        if(is_array($d) && count($d) > 0){
+            foreach ( $d as $t ) {
+                $depts[] = $t->name;
+            }
+        }
 		$depts = '<span class="departments">' . implode( ', ', $depts ) . '</span>';
 		
 		return apply_filters( 'sau-contact-archive-entry', '
